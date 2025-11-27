@@ -1,0 +1,125 @@
+{
+  "intentional_vulnerabilities": {
+    "trivy": [
+      {
+        "package": "flask",
+        "version": "1.0",
+        "vulnerability": "CVE-2023-30861",
+        "severity": "HIGH",
+        "description": "Versão vulnerável do Flask com CVE-2023-30861"
+      }
+    ],
+    "bandit": [
+      {
+        "issue": "blacklist",
+        "detail": "Uso do módulo subprocess sem cuidados de segurança"
+      },
+      {
+        "issue": "blacklist",
+        "detail": "Uso do módulo pickle, possível execução de código malicioso"
+      },
+      {
+        "issue": "hardcoded_password_string",
+        "detail": "Senha hardcoded 'P@ssw0rd123!'"
+      },
+      {
+        "issue": "hardcoded_password_string",
+        "detail": "JWT key hardcoded 'supersecretjwtkey'"
+      },
+      {
+        "issue": "hardcoded_sql_expressions",
+        "detail": "Possível SQL injection via queries construídas com strings"
+      },
+      {
+        "issue": "subprocess_popen_with_shell_equals_true",
+        "detail": "Subprocess call com shell=True"
+      },
+      {
+        "issue": "request_with_no_cert_validation",
+        "detail": "Chamada requests com verify=False"
+      },
+      {
+        "issue": "hardcoded_tmp_directory",
+        "detail": "Uso inseguro de diretório temporário"
+      },
+      {
+        "issue": "set_bad_file_permissions",
+        "detail": "Chmod 0o666 em arquivo"
+      },
+      {
+        "issue": "flask_debug_true",
+        "detail": "Aplicação Flask rodando com debug=True"
+      },
+      {
+        "issue": "hardcoded_bind_all_interfaces",
+        "detail": "Binding para todas as interfaces"
+      }
+    ],
+    "tfsec": [
+      {
+        "rule": "AVD-AWS-0057",
+        "detail": "IAM policy usa action '*' em resource '*'"
+      },
+      {
+        "rule": "AVD-AWS-0086",
+        "detail": "Não bloqueia ACLs públicas"
+      },
+      {
+        "rule": "AVD-AWS-0087",
+        "detail": "Não bloqueia políticas públicas"
+      },
+      {
+        "rule": "AVD-AWS-0088",
+        "detail": "Bucket sem criptografia habilitada"
+      },
+      {
+        "rule": "AVD-AWS-0089",
+        "detail": "Bucket sem logging habilitado"
+      },
+      {
+        "rule": "AVD-AWS-0090",
+        "detail": "Bucket sem versioning habilitado"
+      },
+      {
+        "rule": "AVD-AWS-0132",
+        "detail": "Bucket não criptografa dados com chave gerenciada pelo cliente"
+      },
+      {
+        "rule": "AVD-AWS-0092",
+        "detail": "Bucket com ACL pública 'public-read'"
+      },
+      {
+        "rule": "AVD-AWS-0094",
+        "detail": "Bucket sem public access block correspondente"
+      },
+      {
+        "rule": "AVD-GCP-0066",
+        "detail": "Bucket de storage sem CMK"
+      },
+      {
+        "rule": "AVD-GCP-0001",
+        "detail": "Bucket permite acesso público"
+      }
+    ],
+    "checkov": [
+      {
+        "check_id": "CKV_AWS_20",
+        "detail": "S3 bucket tem acesso público"
+      },
+      {
+        "check_id": "CKV_AWS_21",
+        "detail": "IAM policy com wildcard *"
+      }
+    ],
+    "gitleaks": [
+      {
+        "rule": "hardcoded_password",
+        "detail": "Senha hardcoded 'P@ssw0rd123!'"
+      },
+      {
+        "rule": "hardcoded_jwt",
+        "detail": "JWT key hardcoded 'supersecretjwtkey'"
+      }
+    ]
+  }
+}
