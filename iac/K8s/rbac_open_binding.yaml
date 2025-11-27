@@ -1,0 +1,15 @@
+# iac/k8s/rbac_open_binding.yaml
+# ClusterRoleBinding que promove acesso cluster-admin para subject amplo (intencionalmente inseguro)
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: insecure-cluster-admin-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: Group
+    name: system:authenticated  # vulnerabilidade: todos os usuários autenticados ganham cluster-admin
+    apiGroup: rbac.authorization.k8s.io
