@@ -2,9 +2,11 @@ name: Security Scans (GHAS Alternative)
 
 on:
   push:
-    branches: ['**']
+    branches:
+      - '**'
   pull_request:
-    branches: ['**']
+    branches:
+      - '**'
   schedule:
     # Scan diário às 2h UTC
     #- cron: '0 2 * * *'
@@ -359,7 +361,7 @@ jobs:
         if: always() && github.event_name == 'pull_request'
         run: |
           cat > security-reports/summary.md << 'EOF'
-          ## 🔒 Security Scan Results
+          ## Security Scan Results
           
           ### Scans Executados:
           - ✅ **SAST**: Semgrep (security-audit, OWASP Top 10, CWE Top 25)
@@ -372,7 +374,7 @@ jobs:
           ### Resultados:
           Verifique a aba **Security** para detalhes completos dos alertas encontrados.
           
-          📊 Relatórios detalhados disponíveis nos artifacts deste workflow.
+          Relatórios detalhados disponíveis nos artifacts deste workflow.
           EOF
           
           cat security-reports/summary.md
